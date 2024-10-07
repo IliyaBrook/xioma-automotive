@@ -7,15 +7,15 @@ import taskRoutes from './routes/taskRoutes';
 import dotenv from 'dotenv';
 import http from 'http';
 dotenv.config();
-const { MONGO_URI, SERVER_PORT } = process.env;
+const { MONGO_URI, SERVER_PORT, API_GATEWAY_URL } = process.env;
 import cookieParser from 'cookie-parser';
 import { initNotificationSocket } from './websocket/notificationSocket';
 
 const app = express();
 const server = http.createServer(app);
 
-app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
+app.use((_req, res, next) => {
+	res.header("Access-Control-Allow-Origin", API_GATEWAY_URL);
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 	next();
 });

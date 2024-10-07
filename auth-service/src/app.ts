@@ -7,12 +7,12 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 dotenv.config();
-const { MONGO_URI, SERVER_PORT } = process.env;
+const { MONGO_URI, SERVER_PORT, API_GATEWAY_URL } = process.env;
 
 const app = express();
 
 app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", API_GATEWAY_URL);
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 	next();
 });

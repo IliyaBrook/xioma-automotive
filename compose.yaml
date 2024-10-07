@@ -36,6 +36,8 @@ services:
       - AUTH_SERVICE_URL=${AUTH_SERVICE_URL}
       - TASK_SERVICE_URL=${TASK_SERVICE_URL}
       - API_GATEWAY_PORT=${API_GATEWAY_PORT}
+      - CLIENT_URL=${CLIENT_URL}
+      - NGINX_URL=${NGINX_URL}
     depends_on:
       - mongo
     networks:
@@ -48,6 +50,7 @@ services:
     environment:
       - MONGO_URI=${MONGODB_URL}
       - JWT_SECRET=${JWT_SECRET}
+      - API_GATEWAY_URL=${API_GATEWAY_URL}
     depends_on:
       - mongo
       - api-gateway
@@ -60,16 +63,26 @@ services:
       - "4000:4000"
     environment:
       - MONGO_URI=${MONGODB_URL}
+      - API_GATEWAY_URL=${API_GATEWAY_URL}
     depends_on:
       - mongo
       - api-gateway
     networks:
       - xioma-automotive-network
-
+  xioma-auto-nginx:
+    build: ./xioma-auto-client
+    container_name: xioma-auto-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - mongo
+      - api-gateway
+    networks:
+      - xioma-automotive-network
   xioma-auto-client:
     build: ./xioma-auto-client
     ports:
-      - "80:80"
+      - "3000:80"
     depends_on:
       - mongo
       - api-gateway
@@ -78,7 +91,7 @@ services:
 networks:
   xioma-automotive-network:
     driver: bridge
-#    external: true
+    external: true
 volumes:
   xioma-automotive-data:
     driver: local

@@ -10,15 +10,14 @@ dotenv.config();
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
+const { API_GATEWAY_PORT, AUTH_SERVICE_URL, TASK_SERVICE_URL, NGINX_URL } = process.env;
 
 app.use((_req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", NGINX_URL);
 	res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cookie");
 	next();
 });
-
-const { API_GATEWAY_PORT, AUTH_SERVICE_URL, TASK_SERVICE_URL } = process.env;
 
 const checkTokenWithAuthService = async (req: express.Request) => {
 	const token = req.cookies.token;
