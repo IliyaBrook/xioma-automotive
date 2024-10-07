@@ -13,7 +13,7 @@ const loadGoogleMapsAPI = () => {
   script.async = true;
   document.head.appendChild(script);
 };
-
+//
 loadGoogleMapsAPI();
 
 createRoot(document.getElementById('root')!).render(
