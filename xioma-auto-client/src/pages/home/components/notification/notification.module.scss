@@ -1,0 +1,15 @@
+.notificationItemLi{
+	cursor: pointer;
+	&:hover{
+		background-color: #f5f5f5;
+	}
+	.notificationItem{
+		padding: 5px;
+	}
+	.deleteNotifyBtn{
+		padding: 5px;
+	}
+}
+.unreadNotification {
+	background-color: #f0f0f0;
+}

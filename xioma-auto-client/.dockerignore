@@ -1,0 +1,13 @@
+node_modules
+dist
+.cache
+.vscode
+.DS_Store
+
+# real production we must uncomment this lines
+#.env
+#.env.local
+#.env.*.local
+
+npm-debug.log
+yarn-error.log

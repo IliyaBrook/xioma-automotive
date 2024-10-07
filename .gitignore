@@ -1,0 +1,8 @@
+.idea
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+# ignore all enviroments files
+.env*
+*environment*

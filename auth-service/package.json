@@ -1,0 +1,32 @@
+{
+	"name": "xioma-auto-auth-service",
+	"version": "1.0.0",
+	"main": "dist/app.js",
+	"repository": "https://github.com/IliyaBrook/xioma-auto-server",
+	"author": "Iliya Brook <iliyabrook1987@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsc && tsc-alias",
+		"start": "node dist/app.js",
+		"dev": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"cookie-parser": "^1.4.6",
+		"dotenv": "^16.4.5",
+		"express": "^4.21.0",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.6.3",
+		"tsc-alias": "^1.8.10"
+	},
+	"devDependencies": {
+		"@types/bcryptjs": "^2.4.6",
+		"@types/cookie-parser": "^1.4.7",
+		"@types/express": "^4.17.21",
+		"@types/jsonwebtoken": "^9.0.7",
+		"nodemon": "^3.1.7",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
+		"typescript": "^5.6.2"
+	}
+}

@@ -1,0 +1,24 @@
+.header{
+	background-color: #ffff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+	.headerRow{
+		.loggedInUserWrapper{
+			& > span {
+				font-size: 18px;
+				& > span {
+					font-weight: bold;
+				}
+			}
+		}
+		.notificationWrapper{
+			display: flex;
+			justify-content: flex-end;
+			.badgeWrapper{
+				cursor: pointer;
+				path{
+					color: #000;
+				}
+			}
+		}
+	}
+}
